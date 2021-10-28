@@ -11,6 +11,7 @@
 
 // CODE HERE
 
+const sayHelloButton = document.querySelector('#say-hello-button')
 
 // PROBLEM 2
 /*
@@ -21,6 +22,11 @@
 
 // CODE HERE
 
+function makeBlackBackground(event){
+    event.target.classList.toggle('blackBackground')
+}
+
+sayHelloButton.addEventListener('mouseover', makeBlackBackground)
 
 // PROBLEM 3
 /*
@@ -32,6 +38,12 @@
 */
 
 // CODE HERE
+
+function changeBackgroundBack(event){
+    event.target.classList.toggle('normalBackground')
+}
+
+sayHelloButton.addEventListener('mouseout', changeBackgroundBack)
 
 
 // PROBLEM 4
