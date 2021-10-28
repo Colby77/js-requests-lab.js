@@ -2,6 +2,12 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+
+
+
+
+// const { default: axios } = require("axios")
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -66,6 +72,7 @@ const sayHello = () => {
 
 // CODE HERE
 
+sayHelloButton.addEventListener('click', sayHello)
 
 // PROBLEM 5 
 /*
@@ -80,6 +87,11 @@ const sayHello = () => {
 
 const ohMy = () => {
     // YOUR CODE HERE
+    axios.get("http://localhost:3000/animals")
+        .then(function(response) {
+            console.log(response.data)
+        })
+
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -98,9 +110,26 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
     We'll be updating this function in the next problem.
 */
 
+const repeatButton = document.querySelector('#repeat-button')
+
+
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    let repeatText = document.querySelector('#repeat-text')
+    console.log(repeatText)
+    axios.get('http://localhost:3000/repeat/teststring')
+        .then(function(response) {
+            console.log(response.data)
+            repeatText.style.display = 'block';
+            repeatText.textContent = response.data
+        })
+        .catch((err) => {
+            console.log(err)
+          })
 }
+
+
+repeatButton.addEventListener('click', repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -124,6 +153,17 @@ const repeatMyParam = () => {
 
 // CODE HERE
 
+let queryButton = document.querySelector('#query-button')
+
+const request = () => {
+
+    axios.get('http://localhost:3000/query-test?7')
+    .then(function(response) {
+        console.log(response.data)
+    })
+}
+
+queryButton.addEventListener('click', request)
 
 
 ////////////////
